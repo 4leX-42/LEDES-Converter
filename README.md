@@ -4,21 +4,41 @@
 Contexto: usuario
 Instalar: $f="$env:TEMP\LEDES98BI.exe"; [Net.ServicePointManager]::SecurityProtocol=3072; irm https://github.com/4leX-42/LEDES-Converter/releases/latest/download/Conversor.LEDES.98BI.exe -OutFile $f; explorer.exe "$f"
 -->
+<div align="center">
+
 # Conversor LEDES 98BI
 
-Aplicación de escritorio para Windows (Python + tkinter, empaquetada en un `.exe` con PyInstaller) que
-lee facturas en PDF, extrae cabecera y partidas, clasifica las partidas con códigos UTBMS y genera el
-fichero **LEDES 98BI** (`LEDES98BI V5`) que piden las plataformas de facturación legal. Valida la
-aritmética del formato antes de escribir. Todo local: no envía nada a internet.
+Facturas PDF a LEDES 98BI para plataformas de e-billing legal. Local, sin red.
 
-Parte de [GADGETS-SUPPORT_CX](https://github.com/4leX-42/GADGETS-SUPPORT_CX), el catálogo de herramientas.
+![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-1f1f1f?style=flat-square) ![Python](https://img.shields.io/badge/Python-tkinter-1f1f1f?style=flat-square&logo=python&logoColor=white) ![LEDES](https://img.shields.io/badge/LEDES98BI-V5-c8a25a?style=flat-square)
 
-## Usar
+<img src="assets/screenshot.png" width="760" alt="Conversor LEDES 98BI">
 
-Descargar `Conversor.LEDES.98BI.exe` de la [última release](https://github.com/4leX-42/LEDES-Converter/releases/latest)
-y abrirlo (no necesita Python ni instalación). Arrastrar PDFs a la ventana, revisar y "Generar fichero".
+<sub>Parte de <a href="https://github.com/4leX-42/GADGETS-SUPPORT_CX">GADGETS-SUPPORT_CX</a></sub>
 
-## Compilar
+</div>
+
+## <img src="https://api.iconify.design/lucide/download.svg?color=%238b949e" width="18" align="top"> Instalar
+
+```powershell
+$f="$env:TEMP\LEDES98BI.exe"; [Net.ServicePointManager]::SecurityProtocol=3072; irm https://github.com/4leX-42/LEDES-Converter/releases/latest/download/Conversor.LEDES.98BI.exe -OutFile $f; explorer.exe "$f"
+```
+
+Portable: sin Python ni instalación.
+
+## <img src="https://api.iconify.design/lucide/receipt.svg?color=%238b949e" width="18" align="top"> Qué hace
+
+| | |
+|---|---|
+| <img src="https://api.iconify.design/lucide/file-text.svg?color=%238b949e" width="18" align="top"> **Extrae** | Cabecera y partidas de cada factura PDF |
+| <img src="https://api.iconify.design/lucide/tags.svg?color=%238b949e" width="18" align="top"> **Clasifica** | Partidas con códigos UTBMS |
+| <img src="https://api.iconify.design/lucide/calculator.svg?color=%238b949e" width="18" align="top"> **Valida** | Aritmética del formato antes de escribir |
+| <img src="https://api.iconify.design/lucide/file-spreadsheet.svg?color=%238b949e" width="18" align="top"> **Genera** | Fichero `LEDES98BI V5` |
+
+Arrastrar PDFs, revisar y *Generar fichero*. Manual completo (formato, cálculos, configuración): [`LEEME.md`](LEEME.md).
+
+<details>
+<summary><img src="https://api.iconify.design/lucide/code-xml.svg?color=%238b949e" width="18" align="top"> <b>Compilar</b></summary>
 
 ```powershell
 pip install -r requirements.txt pyinstaller
@@ -26,5 +46,4 @@ python assets\make_logo.py              # solo si cambia el logotipo
 python -m PyInstaller build.spec --noconfirm
 # -> dist\Conversor LEDES 98BI.exe
 ```
-
-Manual completo (formato, cálculos, dónde escribe, configuración): [`LEEME.md`](LEEME.md).
+</details>
